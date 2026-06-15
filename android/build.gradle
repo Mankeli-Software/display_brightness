@@ -1,0 +1,53 @@
+// The Android Gradle Plugin builds the native code with the Android NDK.
+
+group = "fi.mankelisolutions.display_brightness"
+version = "1.0"
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.11.1")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+dependencies {
+    implementation("androidx.annotation:annotation:1.7.1")
+}
+
+android {
+    namespace = "fi.mankelisolutions.display_brightness"
+
+    compileSdk = 36
+
+    ndkVersion = android.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        minSdk = 24
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+        languageVersion = "1.9"
+        apiVersion = "1.9"
+    }
+}
