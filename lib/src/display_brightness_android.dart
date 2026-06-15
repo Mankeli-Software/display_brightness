@@ -3,20 +3,25 @@ import 'dart:ui' show PlatformDispatcher;
 
 import 'package:jni/jni.dart';
 import 'package:jni_flutter/jni_flutter.dart' as jnif;
+import 'package:meta/meta.dart';
 
 import 'display_brightness_controller.dart';
 import 'display_brightness_android.g.dart';
 
-/// Android implementation of [DisplayBrightnessController] backed by
-/// a JNI [DisplayBrightness] instance.
-class DisplayBrightnessAndroid implements DisplayBrightnessController {
+abstract class AndroidDisplayBrightnessDelegate {
+  double? get brightness;
+  set brightness(double value);
+  void startObserving(void Function(double) onBrightnessChanged);
+  void stopObserving();
+  void dispose();
+}
+
+// coverage:ignore-start
+class _DefaultAndroidDisplayBrightnessDelegate implements AndroidDisplayBrightnessDelegate {
   late final DisplayBrightness _native;
-  StreamController<double>? _controller;
   BrightnessCallback? _callback;
 
-  /// Creates a [DisplayBrightnessAndroid] using the current Activity
-  /// obtained via `jni_flutter`.
-  DisplayBrightnessAndroid() {
+  _DefaultAndroidDisplayBrightnessDelegate() {
     final engineId = PlatformDispatcher.instance.engineId;
     if (engineId == null) {
       throw StateError('Engine ID is null — cannot access Activity');
@@ -38,8 +43,52 @@ class DisplayBrightnessAndroid implements DisplayBrightnessController {
   }
 
   @override
-  void setBrightness(double value) {
+  set brightness(double value) {
     _native.brightness$1 = value;
+  }
+
+  @override
+  void startObserving(void Function(double) onBrightnessChanged) {
+    _callback = BrightnessCallback.implement(
+      $BrightnessCallback(
+        onBrightnessChanged: onBrightnessChanged,
+        onBrightnessChanged$async: true,
+      ),
+    );
+    _native.startObserving(_callback!);
+  }
+
+  @override
+  void stopObserving() {
+    _native.stopObserving();
+    _callback?.release();
+    _callback = null;
+  }
+
+  @override
+  void dispose() {
+    _native.release();
+  }
+}
+// coverage:ignore-end
+
+/// Android implementation of [DisplayBrightnessController] backed by
+/// a JNI [DisplayBrightness] instance.
+class DisplayBrightnessAndroid implements DisplayBrightnessController {
+  final AndroidDisplayBrightnessDelegate _delegate;
+  StreamController<double>? _controller;
+
+  /// Creates a [DisplayBrightnessAndroid] using the current Activity
+  /// obtained via `jni_flutter`.
+  DisplayBrightnessAndroid({@visibleForTesting AndroidDisplayBrightnessDelegate? delegate})
+      : _delegate = delegate ?? _DefaultAndroidDisplayBrightnessDelegate(); // coverage:ignore-line
+
+  @override
+  double? get brightness => _delegate.brightness;
+
+  @override
+  void setBrightness(double value) {
+    _delegate.brightness = value;
     if (_controller != null && !_controller!.isClosed) {
       _controller!.add(value);
     }
@@ -55,21 +104,13 @@ class DisplayBrightnessAndroid implements DisplayBrightnessController {
   }
 
   void _startObserving() {
-    _callback = BrightnessCallback.implement(
-      $BrightnessCallback(
-        onBrightnessChanged: (brightness) {
-          _controller?.add(brightness);
-        },
-        onBrightnessChanged$async: true,
-      ),
-    );
-    _native.startObserving(_callback!);
+    _delegate.startObserving((brightness) {
+      _controller?.add(brightness);
+    });
   }
 
   void _stopObserving() {
-    _native.stopObserving();
-    _callback?.release();
-    _callback = null;
+    _delegate.stopObserving();
   }
 
   @override
@@ -77,6 +118,6 @@ class DisplayBrightnessAndroid implements DisplayBrightnessController {
     _stopObserving();
     _controller?.close();
     _controller = null;
-    _native.release();
+    _delegate.dispose();
   }
 }

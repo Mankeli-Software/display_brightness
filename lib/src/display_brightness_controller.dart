@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io' show Platform;
 
+import 'package:meta/meta.dart';
+
 import 'display_brightness_android.dart';
 import 'display_brightness_ios.dart';
 
@@ -29,12 +31,30 @@ import 'display_brightness_ios.dart';
 /// brightness.dispose();
 /// ```
 abstract class DisplayBrightnessController {
+  @visibleForTesting
+  static bool isAndroidOverride = Platform.isAndroid;
+
+  @visibleForTesting
+  static bool isIosOverride = Platform.isIOS;
+
+  @visibleForTesting
+  static AndroidDisplayBrightnessDelegate? androidDelegateOverride;
+
+  @visibleForTesting
+  static IosDisplayBrightnessDelegate? iosDelegateOverride;
+
   /// Creates a [DisplayBrightnessController] for the current platform.
   ///
   /// Throws [UnsupportedError] on unsupported platforms.
   factory DisplayBrightnessController() {
-    if (Platform.isAndroid) return DisplayBrightnessAndroid();
-    if (Platform.isIOS) return DisplayBrightnessIos();
+    if (isAndroidOverride) {
+      // ignore: invalid_use_of_visible_for_testing_member
+      return DisplayBrightnessAndroid(delegate: androidDelegateOverride);
+    }
+    if (isIosOverride) {
+      // ignore: invalid_use_of_visible_for_testing_member
+      return DisplayBrightnessIos(delegate: iosDelegateOverride);
+    }
     throw UnsupportedError(
       'DisplayBrightnessController is not supported on this platform.',
     );

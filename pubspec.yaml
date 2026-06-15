@@ -20,6 +20,7 @@ dependencies:
   jni: ^1.0.0
   objective_c: ^9.3.0
   jni_flutter: ^1.0.1
+  meta: ^1.18.0
 
 dev_dependencies:
   flutter_test:
