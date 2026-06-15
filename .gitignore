@@ -34,3 +34,6 @@ migrate_working_dir/
 example/ios/Flutter/Local.xcconfig
 example/macos/Flutter/Local.xcconfig
 
+# Xcode / Swift Package Manager user state
+*.xcuserdatad
+xcuserdata/
