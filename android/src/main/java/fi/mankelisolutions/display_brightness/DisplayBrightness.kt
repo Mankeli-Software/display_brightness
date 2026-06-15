@@ -89,8 +89,8 @@ class DisplayBrightness(private val activity: Activity) {
                         Settings.System.SCREEN_BRIGHTNESS
                     ) / 255.0
                 } catch (e: Settings.SettingNotFoundException) {
-                    0.5
-                }
+                    null
+                } ?: return
 
                 // If app currently overrides brightness, clear it to let the system brightness take effect
                 val layoutParams = activity.window.attributes
