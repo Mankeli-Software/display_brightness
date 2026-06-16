@@ -1,0 +1,21 @@
+name: display_brightness_platform_interface
+description: "A common platform interface for the display_brightness plugin."
+version: 0.1.0
+homepage: https://github.com/Mankeli-Software/display_brightness
+repository: https://github.com/Mankeli-Software/display_brightness/tree/main/packages/display_brightness_platform_interface
+
+environment:
+  sdk: ^3.10.0
+  flutter: ">=3.3.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0

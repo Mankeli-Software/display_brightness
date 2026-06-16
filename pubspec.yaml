@@ -1,40 +1,63 @@
-name: display_brightness
-description: "Control app-level screen brightness on iOS and Android using direct native interop (jnigen/swiftgen). No permissions required."
-version: 0.1.0
-homepage: https://github.com/Mankeli-Software/display_brightness
-topics:
-  - screen
-  - brightness
-  - jnigen
-  - swiftgen
-  - ffi
+name: display_brightness_workspace
+publish_to: none
 
 environment:
   sdk: ^3.10.0
-  flutter: ">=3.3.0"
 
-dependencies:
-  flutter:
-    sdk: flutter
-  ffi: ^2.1.3
-  jni: ^1.0.0
-  objective_c: ^9.3.0
-  jni_flutter: ^1.0.1
-  meta: ^1.18.0
+workspace:
+  - packages/display_brightness
+  - packages/display_brightness_platform_interface
+  - packages/display_brightness_android
+  - packages/display_brightness_ios
+  - example
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^6.0.0
-  jnigen: ^0.16.0
-  swiftgen: ^0.1.2
-  logging: ^1.3.0
-  ffigen: ^20.1.1
+  melos: ^7.0.0
 
-flutter:
-  plugin:
-    platforms:
-      android:
-        ffiPlugin: true
-      ios:
-        ffiPlugin: true
+melos:
+  repository: https://github.com/Mankeli-Software/display_brightness
+  command:
+    version:
+      conventionalCommits: true
+      updateDependentsConstraints: true
+      linkToCommits: true
+
+  scripts:
+    test:
+      description: Run `flutter test` in all packages that have tests.
+      exec: flutter test
+      packageFilters:
+        dirExists: test
+
+    test:coverage:
+      description: Run `flutter test --coverage` in all packages that have tests.
+      exec: flutter test --coverage
+      packageFilters:
+        dirExists: test
+
+    format:
+      description: Check formatting in all packages.
+      exec: dart format --set-exit-if-changed .
+
+    format:fix:
+      description: Fix formatting in all packages.
+      exec: dart format .
+
+    codegen:android:
+      description: Regenerate Android JNI bindings.
+      exec: dart run tool/jnigen.dart
+      packageFilters:
+        scope: display_brightness_android
+
+    codegen:ios:
+      description: Regenerate iOS swiftgen bindings.
+      exec: dart run tool/swiftgen.dart
+      packageFilters:
+        scope: display_brightness_ios
+
+    dry-run:
+      description: Dry-run publish all packages.
+      exec: dart pub publish --dry-run
+      packageFilters:
+        noPrivate: true
+

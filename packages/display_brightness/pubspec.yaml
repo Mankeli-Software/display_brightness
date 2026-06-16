@@ -1,0 +1,38 @@
+name: display_brightness
+description: "Control app-level screen brightness on iOS and Android using direct native interop (jnigen/swiftgen). No permissions required."
+version: 0.1.0
+homepage: https://github.com/Mankeli-Software/display_brightness
+repository: https://github.com/Mankeli-Software/display_brightness/tree/main/packages/display_brightness
+topics:
+  - screen
+  - brightness
+  - jnigen
+  - swiftgen
+  - ffi
+
+environment:
+  sdk: ^3.10.0
+  flutter: ">=3.3.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  display_brightness_platform_interface: ^0.1.0
+  display_brightness_android: ^0.1.0
+  display_brightness_ios: ^0.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  plugin_platform_interface: ^2.1.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: display_brightness_android
+      ios:
+        default_package: display_brightness_ios

@@ -57,53 +57,19 @@ controller.dispose();
 
 ## Development
 
-This project uses [Melos](https://melos.invertase.dev/) to manage the monorepo.
-
-### Setup
-
-```bash
-# Install Melos globally
-dart pub global activate melos
-
-# Bootstrap all packages (links local deps, resolves pub)
-melos bootstrap
-```
-
-### Common Commands
-
-```bash
-# Run analysis across all packages
-melos run analyze
-
-# Run tests across all packages
-melos run test
-
-# Run tests with coverage
-melos run test:coverage
-
-# Check formatting
-melos run format
-
-# Fix formatting
-melos run format:fix
-
-# Dry-run publish to check for issues
-melos run dry-run
-```
-
-### Regenerating native bindings
+### Regenerating bindings
 
 After modifying native code, regenerate bindings:
 
 ```bash
-# Build Android first (required for jnigen)
+# Build Android first
 cd example && flutter build apk && cd ..
 
 # Generate Android bindings
-melos run codegen:android
+dart run tool/jnigen.dart
 
 # Generate iOS bindings (requires Xcode)
-melos run codegen:ios
+dart run tool/swiftgen.dart
 ```
 
 ### Troubleshooting Android Bindings Generation
@@ -121,17 +87,4 @@ Run the following from the plugin's `example/android` directory:
 
 *Special thanks to Dominik Roszkowski for sharing this fix in his article: [jnigen and swiftgen in 2026 - some lessons learned](https://roszkowski.dev/2026/swiftgen-jnigen/#issues-while-regenerating-bindings).*
 
-### Publishing
 
-This project uses Melos for coordinated publishing. See the [Publish workflow](.github/workflows/publish.yml) for CI/CD publishing, or run manually:
-
-```bash
-# Version packages based on conventional commits
-melos version
-
-# Publish (dry-run first)
-melos publish --dry-run
-melos publish --no-dry-run -y
-```
-
-> **Note:** Packages must be published in dependency order: `display_brightness_platform_interface` → `display_brightness_android` / `display_brightness_ios` → `display_brightness`. Melos handles this automatically.
