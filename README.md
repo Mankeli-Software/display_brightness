@@ -1,6 +1,6 @@
 # display_brightness
 
-A Flutter plugin for controlling app-level screen brightness on iOS and Android using direct native interop via **jnigen** (Android) and **swiftgen** (iOS). No permissions required.
+A Flutter plugin for controlling app-level screen brightness on iOS and Android using direct native interop via **jnigen** (Android) and **swiftgen** (iOS).
 
 ## Features
 
