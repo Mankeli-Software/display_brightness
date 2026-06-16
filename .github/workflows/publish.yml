@@ -1,0 +1,49 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Dry run (no actual publish)'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+# Required for pub.dev trusted publishing (OIDC)
+permissions:
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install Melos
+        run: dart pub global activate melos
+
+      - name: Bootstrap
+        run: melos bootstrap
+
+      - name: Analyze
+        run: melos run analyze
+
+      - name: Run tests
+        run: melos run test
+
+      - name: Publish (dry run)
+        if: inputs.dry-run == 'true'
+        run: melos publish --dry-run
+
+      - name: Publish
+        if: inputs.dry-run == 'false'
+        run: melos publish --no-dry-run -y
