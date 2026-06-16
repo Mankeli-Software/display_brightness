@@ -23,6 +23,10 @@ melos:
       linkToCommits: true
 
   scripts:
+    analyze:
+      description: Run `dart analyze` in all packages.
+      exec: dart analyze --fatal-infos
+
     test:
       description: Run `flutter test` in all packages that have tests.
       exec: flutter test
