@@ -3,7 +3,10 @@ name: Publish
 on:
   push:
     tags:
-      - '*v[0-9]*'
+      - 'display_brightness-v*'
+      - 'display_brightness_platform_interface-v*'
+      - 'display_brightness_android-v*'
+      - 'display_brightness_ios-v*'
   workflow_dispatch:
     inputs:
       publish:
