@@ -12,8 +12,6 @@ rootProject.allprojects {
 
 apply plugin: "com.android.library"
 
-apply plugin: 'kotlin-android'
-
 dependencies {
     implementation("androidx.annotation:annotation:1.7.1")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")

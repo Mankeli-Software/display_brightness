@@ -32,4 +32,5 @@ flutter:
     platforms:
       android:
         dartPluginClass: DisplayBrightnessAndroid
+        pluginClass: fi.mankelisolutions.display_brightness.DisplayBrightnessPlugin
         ffiPlugin: true
