@@ -15,7 +15,7 @@ using swiftgen for direct native interop. No permissions required.
   s.author           = { 'Mankeli Solutions' => 'contact@mankelisolutions.fi' }
 
   s.source           = { :path => '.' }
-  s.source_files     = 'display_brightness/Sources/display_brightness/**/*'
+  s.source_files     = 'display_brightness_ios/Sources/display_brightness/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '13.0'
 

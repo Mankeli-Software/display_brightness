@@ -1,20 +1,14 @@
 PODS:
-  - display_brightness_ios (0.1.0):
-    - Flutter
   - Flutter (1.0.0)
 
 DEPENDENCIES:
-  - display_brightness_ios (from `.symlinks/plugins/display_brightness_ios/ios`)
   - Flutter (from `Flutter`)
 
 EXTERNAL SOURCES:
-  display_brightness_ios:
-    :path: ".symlinks/plugins/display_brightness_ios/ios"
   Flutter:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  display_brightness_ios: 618554a2a0f24899896fce1c97d1ea2d33558b26
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
 
 PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
