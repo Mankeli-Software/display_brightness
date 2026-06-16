@@ -3,18 +3,6 @@
 group = "fi.mankelisolutions.display_brightness"
 version = "1.0"
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.11.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
-    }
-}
-
 rootProject.allprojects {
     repositories {
         google()
@@ -23,10 +11,12 @@ rootProject.allprojects {
 }
 
 apply plugin: "com.android.library"
-apply plugin: "kotlin-android"
+
+apply plugin: 'kotlin-android'
 
 dependencies {
     implementation("androidx.annotation:annotation:1.7.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
 }
 
 android {
@@ -44,10 +34,10 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
 
-    kotlinOptions {
-        jvmTarget = "17"
-        languageVersion = "1.9"
-        apiVersion = "1.9"
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
