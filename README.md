@@ -123,15 +123,10 @@ Run the following from the plugin's `example/android` directory:
 
 ### Publishing
 
-This project uses Melos for coordinated publishing. See the [Publish workflow](.github/workflows/publish.yml) for CI/CD publishing, or run manually:
-
-```bash
-# Version packages based on conventional commits
-melos version
-
-# Publish (dry-run first)
-melos publish --dry-run
-melos publish --no-dry-run -y
-```
-
-> **Note:** Packages must be published in dependency order: `display_brightness_platform_interface` → `display_brightness_android` / `display_brightness_ios` → `display_brightness`. Melos handles this automatically.
+To publish new versions:
+1. Commit all your changes.
+2. Run `melos version` locally.
+3. Push your commits and tags to GitHub:
+   ```bash
+   git push && git push --tags
+   ```
