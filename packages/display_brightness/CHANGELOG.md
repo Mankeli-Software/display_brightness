@@ -1,3 +1,7 @@
+## 0.1.1+1
+
+ - **DOCS**: remove mention of permissions from README. ([10c2ecae](https://github.com/Mankeli-Software/display_brightness/commit/10c2ecaecce58a01c4d614d47795fe3444a87545))
+
 ## 0.1.1
 
  - **FEAT**: refactors the plugin to use federated architecture. ([7ffa3217](https://github.com/Mankeli-Software/display_brightness/commit/7ffa321775aaddfc05ce6b1b72598a59415bddbb))

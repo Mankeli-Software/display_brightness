@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`display_brightness` - `v0.1.1+1`](#display_brightness---v0111)
+
+---
+
+#### `display_brightness` - `v0.1.1+1`
+
+ - **DOCS**: remove mention of permissions from README. ([10c2ecae](https://github.com/Mankeli-Software/display_brightness/commit/10c2ecaecce58a01c4d614d47795fe3444a87545))
+
+
+## 2026-06-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`display_brightness` - `v0.1.1`](#display_brightness---v011)
  - [`display_brightness_android` - `v0.1.1`](#display_brightness_android---v011)
  - [`display_brightness_ios` - `v0.1.1`](#display_brightness_ios---v011)
