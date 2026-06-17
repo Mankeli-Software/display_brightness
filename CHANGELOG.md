@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`display_brightness` - `v0.1.1+2`](#display_brightness---v0112)
+ - [`display_brightness_android` - `v0.1.1+1`](#display_brightness_android---v0111)
+
+---
+
+#### `display_brightness` - `v0.1.1+2`
+
+ - **FIX**: move example project to packages/display_brightness. ([978000a7](https://github.com/Mankeli-Software/display_brightness/commit/978000a7add1e819aa3dd9174971a7084bf471d2))
+
+#### `display_brightness_android` - `v0.1.1+1`
+
+ - **FIX**: move example project to packages/display_brightness. ([978000a7](https://github.com/Mankeli-Software/display_brightness/commit/978000a7add1e819aa3dd9174971a7084bf471d2))
+
+
 ## 2026-06-16
 
 ### Changes

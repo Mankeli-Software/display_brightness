@@ -1,6 +1,6 @@
 name: display_brightness_android
 description: "Android implementation of the display_brightness plugin."
-version: 0.1.1
+version: 0.1.1+1
 homepage: https://github.com/Mankeli-Software/display_brightness
 repository: https://github.com/Mankeli-Software/display_brightness/tree/main/packages/display_brightness_android
 

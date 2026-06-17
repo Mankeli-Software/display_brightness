@@ -1,3 +1,7 @@
+## 0.1.1+1
+
+ - **FIX**: move example project to packages/display_brightness. ([978000a7](https://github.com/Mankeli-Software/display_brightness/commit/978000a7add1e819aa3dd9174971a7084bf471d2))
+
 ## 0.1.1
 
  - **FEAT**: add dummy FlutterPlugin to ensure Kotlin support in FFI plugin for AGP 9.0+ compatibility. ([162c2aaf](https://github.com/Mankeli-Software/display_brightness/commit/162c2aaf373bdf42fe1ac3b514254732692fdc76))
