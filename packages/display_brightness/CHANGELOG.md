@@ -1,3 +1,7 @@
+## 0.1.1+3
+
+ - **FIX**: add example to workspace to resolve local path dependencies. ([0e0c6701](https://github.com/Mankeli-Software/display_brightness/commit/0e0c67015fffd0b88f93e1ea97ec8a13305f8a25))
+
 ## 0.1.1+2
 
  - **FIX**: move example project to packages/display_brightness. ([978000a7](https://github.com/Mankeli-Software/display_brightness/commit/978000a7add1e819aa3dd9174971a7084bf471d2))

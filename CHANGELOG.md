@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`display_brightness` - `v0.1.1+3`](#display_brightness---v0113)
+
+---
+
+#### `display_brightness` - `v0.1.1+3`
+
+ - **FIX**: add example to workspace to resolve local path dependencies. ([0e0c6701](https://github.com/Mankeli-Software/display_brightness/commit/0e0c67015fffd0b88f93e1ea97ec8a13305f8a25))
+
+
+## 2026-06-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`display_brightness` - `v0.1.1+2`](#display_brightness---v0112)
  - [`display_brightness_android` - `v0.1.1+1`](#display_brightness_android---v0111)
 
