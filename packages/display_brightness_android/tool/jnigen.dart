@@ -16,11 +16,11 @@ void main(List<String> args) {
       ),
       androidSdkConfig: AndroidSdkConfig(
         addGradleDeps: true,
-        androidExample: '../../example',
+        androidExample: '../../packages/display_brightness/example',
       ),
       classPath: [
         packageRoot.resolve(
-          '../../example/build/display_brightness_android/tmp/kotlin-classes/release/',
+          '../../packages/display_brightness/example/build/display_brightness_android/tmp/kotlin-classes/release/',
         ),
       ],
       classes: [

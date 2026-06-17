@@ -6,13 +6,11 @@ version: 1.0.0+1
 environment:
   sdk: ^3.10.0
 
-resolution: workspace
-
 dependencies:
   flutter:
     sdk: flutter
   display_brightness:
-    path: ../packages/display_brightness
+    path: ../
   cupertino_icons: ^1.0.8
 
 dev_dependencies:

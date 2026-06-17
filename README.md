@@ -97,7 +97,7 @@ After modifying native code, regenerate bindings:
 
 ```bash
 # Build Android first (required for jnigen)
-cd example && flutter build apk && cd ..
+cd packages/display_brightness/example && flutter build apk && cd ../../..
 
 # Generate Android bindings
 melos run codegen:android
@@ -114,7 +114,7 @@ Unexpected end of input (at character 1)
 ```
 This is likely because the compiled classes parser fails. You can resolve this by rebuilding the Android library with the gradle wrapper directly.
 
-Run the following from the plugin's `example/android` directory:
+Run the following from the plugin's `packages/display_brightness/example/android` directory:
 ```bash
 ./gradlew :display_brightness:assembleDebug --no-daemon --console=plain --refresh-dependencies --rerun-tasks
 ```
