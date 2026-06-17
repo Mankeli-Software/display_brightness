@@ -9,6 +9,7 @@ workspace:
   - packages/display_brightness_platform_interface
   - packages/display_brightness_android
   - packages/display_brightness_ios
+  - packages/display_brightness/example
 
 dev_dependencies:
   melos: ^7.0.0
