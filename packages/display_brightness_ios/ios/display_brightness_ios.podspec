@@ -12,7 +12,7 @@ using swiftgen for direct native interop. No permissions required.
                        DESC
   s.homepage         = 'https://github.com/Mankeli-Software/display_brightness'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Mankeli Solutions' => 'contact@mankelisolutions.fi' }
+  s.author           = { 'Mankeli Solutions' => 'contact@mankeli.co' }
 
   s.source           = { :path => '.' }
   s.source_files     = 'display_brightness_ios/Sources/display_brightness/**/*'
